@@ -1,0 +1,48 @@
+/*Add Prescription*/
+form.example button {
+    float: left;
+    width: 10%;
+    padding: 10px;
+    color: #2196F3;
+    font-size: 20px;
+    border-left: none;
+    cursor: pointer;
+    border-top : 1px solid #C3D4E0;
+    border-top: 1px solid #C3D4E0;
+    border-right: 1px solid #C3D4E0;
+    border-left: none;
+    border-bottom: 1px solid #C3D4E0;
+    background: transparent;
+  }
+  
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .patient-search-form h5 {
+      margin-top: 24px;
+      margin-bottom: 18px;
+  }
+  .ccd-eye {
+      font-size: 10px;
+  }
+  .patient-search-list .example {
+       position: relative;
+  }
+  .patient-search-list .ccd-icon-close {
+     font-size: 12px;
+     font-weight: normal;
+     position: absolute;
+     right: 10px;
+     top: 0;
+     right: 80px;
+     top: 16px;
+  }
+  .patient-search-list .example button {
+      border-left: 1px solid #ccc;
+  }
+  .ccd-search {
+    font-weight: bold;
+  }
+  

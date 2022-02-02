@@ -1,0 +1,213 @@
+<!-- Create Cost Estimate-->
+<div class="container">
+    <div class="breadcrumb-head">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']" routerLinkActive="router-link-active" >Dashboard</a></li>
+            <li class="breadcrumb-item active">Patient Record</li>
+        </ol>
+    </div>
+    <div class="row mb-20">
+        <div class="col-lg-8">
+            <h2 class="name">{{patientDetails?.patient_name | titlecase }}</h2>
+        </div>
+        <div class="col-lg-4"> 
+            <button class="btn button-primary w-100" (click)="viewPatientReport()">View Patient Report</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="create-cost-estimate">
+                <div class="patient-search">
+                    <div class="patient-heading">
+                        <h4>Create Cost Estimate</h4> 
+                    </div>
+                    <div class="prescription">
+                        <div class="">
+                            <p class="mb-0">Patient’s out-of-pocket cost estimate</p>
+                            <h1>{{getTotalPay() | currency}}</h1>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <button class="btn button-primary mt-12 w-210" (click)="viewBillingCode()"> <i class="ccd-eye"></i> Billing Codes</button>
+                                </div>
+                                 <div class="col-lg-4">
+                                    <button class="btn button-primary mt-12 w-210" (click)="viewPrescriptions()"> <i class="ccd-eye"></i> Prescriptions</button>
+                                </div>
+                                 <div class="col-lg-4">
+                                    <button class="btn button-primary mt-12 w-210" (click)="viewAssistance()"> <i class="ccd-eye"></i> Assistance</button>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <div class="patient-search">
+                    <div class="patient-heading">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>Treatment Plan Details</h4> 
+                            </div>
+                            <div class="col-lg-6 right-btn" *ngIf="editFlag">
+                                <button class="btn button-primary" (click) ="updateTreatmentPaln()"> <i class="ccd-pencil1"></i> Save</button>
+                            </div>
+                            <div class="col-lg-6 right-btn" *ngIf="!editFlag">
+                                <button class="btn button-secondary" (click) ="editTreatmentPaln()"> <i class="ccd-pencil1"></i> Edit</button>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="prescription">
+                        <div class="" *ngIf="!editFlag">
+                            <p class="mb-0">{{treatmentPalnDetails?.treatment_plan_details}}</p>
+                        </div>
+                        <div class="" *ngIf="editFlag">
+                            <form [formGroup]="treatmentPlanForm" class="example">
+                                <textarea rows="4" cols="12" formControlName="treatment_plan_details"></textarea>
+                                <p class="error m-0-auto" col-12 ion-text color="danger"
+                                    *ngIf="treatmentPlanForm.controls['treatment_plan_details'].hasError('required') && treatmentPlanForm.controls['treatment_plan_details'].touched">
+                                    Treatment plan details field is required.</p>
+                                <p class="error m-0-auto" col-12 ion-text color="danger"
+                                    *ngIf="treatmentPlanForm.controls['treatment_plan_details'].hasError('pattern') && treatmentPlanForm.controls['treatment_plan_details'].touched">
+                                    Enter valid treatment plan details.</p>
+                            </form>
+                        </div>
+                     </div>
+                     
+                </div>
+                <div class="patient-search">
+                    <div class="patient-heading">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>Health Insurance Details</h4> 
+                            </div>
+                            <div class="col-lg-6 right-btn">
+                                <button class="btn button-secondary" (click)="editPatient()"> <i class="ccd-pencil1"></i> Edit</button>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="prescription">
+                        <div class="graph-content">
+                            <div class="graph-heading">
+                                <h6>Insurer Details</h6>
+                            </div>
+                            <p>{{patientDetails?.insurance_name}} <br> {{patientDetails?.company_address}} <br>T: {{patientDetails?.phone}}</p>
+                             <div class="graph-heading">
+                                <h6>ID Number</h6>
+                            </div>
+                            <p>{{patientDetails?.identification_number}}</p>
+                            <div class="graph-heading">
+                                <h6>Group Number</h6>
+                            </div>
+                            <p>{{patientDetails?.group_number}}</p>
+                            <div class="graph-heading">
+                                <h6>Insurance Plan Notes</h6>
+                            </div>
+                            <p>{{patientDetails?.insurance_plan}}</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="insurance-plan mt-12">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <p class="f-bold">Insurance Type</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.insurance_type}}</p>
+                                     </div>
+                                 </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Coverage Effective Date</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.coverage_effective_date | date:'M/d/yyyy'}}</p>
+                                     </div>
+                                 </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Coverage Expiration Date</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.coverage_expiration_date | date:'M/d/yyyy'}}</p>
+                                     </div>
+                                 </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Co-Insurance Percentage</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.co_insurance_percentage}}%</p>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Individual Deductible</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.individual_deductible | currency}}</p>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Individual Deductible Paid</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.individual_deductible_paid | currency}}</p>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Individual Max Out of Pocket</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.individual_max_out_of_pocket | currency}}</p>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Individual Max Out of Pocket Paid</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.individual_max_out_of_pocket_paid | currency}}</p>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Family Deductible</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.family_deductible | currency}}</p>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Family Deductible Paid</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.family_deductible_paid | currency}}</p>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Family Max Out of Pocket</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.family_max_out_of_pocket | currency}}</p>
+                                     </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-6">
+                                        <p class="f-bold">Family Max Out of Pocket Paid</p>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <p>{{patientDetails?.family_max_out_of_pocket_paid | currency}}</p>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-lg-4">
+            <app-notes></app-notes>
+        </div>
+    </div>
+</div>

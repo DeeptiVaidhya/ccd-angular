@@ -1,0 +1,237 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="patient-search">
+                <div class="patient-heading">
+                    <h4>Add new patient</h4>
+                </div>
+                <div class="prescription">
+                    <form [formGroup]="patientForm" autocomplete="off" class="ot-form">
+                        <div class="form-group">
+                            <label>Patient Name</label>
+                            <input type="text" class="form-control"  formControlName="patient_name" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['patient_name'].hasError('required') && patientForm.controls['patient_name'].touched">
+                                Patient Name field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['patient_name'].hasError('pattern') && patientForm.controls['patient_name'].touched">
+                                Please enter valid patient Name .</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Insurer Name</label>
+                            <input type="text" class="form-control"  formControlName="insurance_name" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['insurance_name'].hasError('required') && patientForm.controls['insurance_name'].touched">
+                                Insurer name field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['insurance_name'].hasError('pattern') && patientForm.controls['insurance_name'].touched">
+                                Please enter valid insurer name.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Group Number</label>
+                            <input type="text" class="form-control"  formControlName="group_number" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['group_number'].hasError('required') && patientForm.controls['group_number'].touched">
+                                Group Number field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['group_number'].hasError('pattern') && patientForm.controls['group_number'].touched">
+                                Please enter valid group number .</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Identification Number</label>
+                            <input type="text" class="form-control"  formControlName="identification_number" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['identification_number'].hasError('required') && patientForm.controls['identification_number'].touched">
+                                Identification Number field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['identification_number'].hasError('pattern') && patientForm.controls['identification_number'].touched">
+                                Please enter valid identification number .</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Insurer Address</label>
+                            <textarea rows="4" cols="12" class="form-control"  formControlName="company_address" placeholder="Please enter"></textarea>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['company_address'].hasError('required') && patientForm.controls['company_address'].touched">
+                                Insurer address field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['company_address'].hasError('pattern') && patientForm.controls['company_address'].touched">
+                                Please enter valid insurer address.</p>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Insurer Phone Number</label>
+                            <input type="text" class="form-control"  formControlName="phone" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['phone'].hasError('required') && patientForm.controls['phone'].touched">
+                                Phone number field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['phone'].hasError('pattern') && patientForm.controls['phone'].touched">
+                                Please enter valid phone number.
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Insurance Notes</label>
+                            <textarea rows="4" cols="12" class="form-control"  formControlName="insurance_plan" placeholder="Please enter"></textarea>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['insurance_plan'].hasError('required') && patientForm.controls['insurance_plan'].touched">
+                                Insurance notes field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['insurance_plan'].hasError('pattern') && patientForm.controls['insurance_plan'].touched">
+                                Please enter valid insurance notes.</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Insurance Type</label>
+                           <div class="custom-icon">
+                                <select class="form-control" formControlName="insurance_type" id="exampleFormControlSelect1">
+                                    <option value="">Select Insurance Type</option>
+                                    <option value="PPO">PPO</option>
+                                    <option value ="HMO">HMO</option>
+                                    <option value="Medicare">Medicare</option>
+                                </select>
+                                <i class="ccd-caret-down"></i>
+                                <p class="error m-0-auto" col-12 ion-text color="danger"
+                                    *ngIf="patientForm.controls['insurance_type'].hasError('required') && patientForm.controls['insurance_type'].touched">
+                                    Insurance type field is required.</p>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Coverage Effective Date</label>
+                           <div class="custom-icon">
+                                <i class="ccd-calendar"></i>
+                                <input type="text"
+                                class="form-control"
+                                formControlName="coverage_effective_date"
+                                placeholder="Please enter"
+                                bsDatepicker
+                                readonly = "true"
+                                [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY', containerClass: 'theme-dark-blue' }"
+                                >
+                                <p class="error m-0-auto" col-12 ion-text color="danger"
+                                    *ngIf="patientForm.controls['coverage_effective_date'].hasError('required') && patientForm.controls['coverage_effective_date'].touched">
+                                    Coverage effective date field is required.</p>
+                           </div>
+                        </div>
+                         <div class="form-group">
+                            <label>Coverage Expiration Date</label>
+                           <div class="custom-icon">
+                                <i class="ccd-calendar"></i>
+                                <input type="text" formControlName="coverage_expiration_date" class="form-control" placeholder="Please enter"
+                                bsDatepicker
+                                [minDate]="minDate"
+                                readonly = "true"
+                                [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY', containerClass: 'theme-dark-blue' }">
+                                <p class="error m-0-auto" col-12 ion-text color="danger"
+                                    *ngIf="patientForm.controls['coverage_expiration_date'].hasError('required') && patientForm.controls['coverage_expiration_date'].touched">
+                                    Coverage expiration date field is required.</p>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Co-Insurance Percentage</label>
+                            <input type="text" (blur) ="transformParcent($event)" formControlName="co_insurance_percentage" class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['co_insurance_percentage'].hasError('required') && patientForm.controls['co_insurance_percentage'].touched">
+                                Co-Insurance percentage field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['co_insurance_percentage'].hasError('pattern') && patientForm.controls['co_insurance_percentage'].touched">
+                                Please enter valid co-insurance percentage .</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Individual Deductible</label>
+                            <input type="text" (blur)="transformAmount($event)" formControlName="individual_deductible" class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['individual_deductible'].hasError('required') && patientForm.controls['individual_deductible'].touched">
+                                Individual deductible field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['individual_deductible'].hasError('pattern') && patientForm.controls['individual_deductible'].touched">
+                                Please enter valid individual deductible.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Individual Deductible Paid</label>
+                            <input type="text" (blur)="transformAmount($event)" formControlName="individual_deductible_paid" class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['individual_deductible_paid'].hasError('required') && patientForm.controls['individual_deductible_paid'].touched">
+                                Individual deductible paid field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['individual_deductible_paid'].hasError('pattern') && patientForm.controls['individual_deductible_paid'].touched">
+                                Please enter valid individual deductible paid.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Individual Max Out of Pocket</label>
+                            <input type="text" (blur)="transformAmount($event)"  formControlName="individual_max_out_of_pocket"class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['individual_max_out_of_pocket'].hasError('required') && patientForm.controls['individual_max_out_of_pocket'].touched">
+                                Individual max out of pocket field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['individual_max_out_of_pocket'].hasError('pattern') && patientForm.controls['individual_max_out_of_pocket'].touched">
+                                Please enter valid individual max out of pocket.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Individual Max Out of Pocket Paid</label>
+                            <input type="text" (blur)="transformAmount($event)" formControlName="individual_max_out_of_pocket_paid" class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['individual_max_out_of_pocket_paid'].hasError('required') && patientForm.controls['individual_max_out_of_pocket_paid'].touched">
+                                Individual max out of pocket paid field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['individual_max_out_of_pocket_paid'].hasError('pattern') && patientForm.controls['individual_max_out_of_pocket_paid'].touched">
+                                Please enter valid individual max out of pocket paid.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Family Deductible</label>
+                            <input type="text" (blur)="transformAmount($event)"  formControlName="family_deductible"class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['family_deductible'].hasError('required') && patientForm.controls['family_deductible'].touched">
+                                Family deductible field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['family_deductible'].hasError('pattern') && patientForm.controls['family_deductible'].touched">
+                                Please enter valid family deductible.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Family Deductible Paid</label>
+                            <input type="text" (blur)="transformAmount($event)" formControlName="family_deductible_paid" class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['family_deductible_paid'].hasError('required') && patientForm.controls['family_deductible_paid'].touched">
+                                Family deductible paid field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['family_deductible_paid'].hasError('pattern') && patientForm.controls['family_deductible_paid'].touched">
+                                Please enter valid family deductible paid.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Family Max Out of Pocket</label>
+                            <input type="text" (blur)="transformAmount($event)" formControlName="family_max_out_of_pocket" class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['family_max_out_of_pocket'].hasError('required') && patientForm.controls['family_max_out_of_pocket'].touched">
+                                Family max out of pocket field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['family_max_out_of_pocket'].hasError('pattern') && patientForm.controls['family_max_out_of_pocket'].touched">
+                                Please enter valid family max out of pocket.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Family Max Out of Pocket Paid</label>
+                            <input type="text" (blur)="transformAmount($event)" formControlName="family_max_out_of_pocket_paid" class="form-control" placeholder="Please enter">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['family_max_out_of_pocket_paid'].hasError('required') && patientForm.controls['family_max_out_of_pocket_paid'].touched">
+                                Family max out of pocket paid field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientForm.controls['family_max_out_of_pocket_paid'].hasError('pattern') && patientForm.controls['family_max_out_of_pocket_paid'].touched">
+                                Please enter valid family max out of pocket paid.</p>
+                        </div>
+                    </form>
+                    <div class="bottom-btn">
+                        <div class="left">
+                            <button class="btn button-secondary" (click) ="back()"> Back</button>
+                        </div>
+                        <div class="right">
+                            <button class="btn button-primary" (click)="addPatient()"> Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <app-notes></app-notes>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,513 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+@import '~ngx-toastr/toastr';
+@import './fonts.css';
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+*{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Lato-Regular';
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #1F344D;
+    background: #F7FBFC 0% 0% no-repeat padding-box;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+/*Common css*/
+h1 {
+	font-size: 42px;
+	font-family: 'Lato-Bold';
+    font-weight: 700;
+    line-height: 57px;
+    color: #006EE3;
+}
+h2 {
+	font-size: 32px;
+	font-family: 'Lato-Bold';
+    font-weight: 700;
+    line-height: 39px;
+    color: #004B9C;
+}
+h3 {
+	font-size: 24px;
+	font-family: 'Lato-Bold';
+    font-weight: 700;
+    line-height: 28px;
+    color: #1F344D;
+}
+h4 {
+	font-size: 20px;
+	font-family: 'Lato-Bold';
+    font-weight: 700;
+    line-height: 24px;
+    color: #004B9C;
+    margin: 0;
+}
+h5 {
+	font-size: 18px;
+	font-family: 'Lato-Bold';
+    font-weight: 700;
+    line-height: 24px;
+    color: #1F344D;
+    margin: 0;
+}
+h6 {
+	font-size: 16px;
+	font-family: 'Lato-Bold';
+    font-weight: 700;
+    line-height: 24px;
+    color: #1F344D;
+    margin: 0;
+}
+ul {
+	padding: 0;
+	list-style-type: none;
+}
+a, a:hover {
+	text-decoration: none;
+	color: #1F344D;
+}
+.w-100 {
+	width: 100%;
+}
+.mt-200 {
+	margin-top: 200px;
+}
+.mt-24 {
+	margin-top: 24px;
+}
+.mt-12 {
+	margin-top: 12px;
+}
+.mb-0{
+	margin-bottom: 0;
+}
+.mb-20 {
+	margin-bottom: 20px;
+}
+.f-bold {
+	font-family: 'Lato-Bold';
+	font-weight: 700;
+}
+.f-black {
+	font-family: 'Lato-Black';
+	font-weight: 900;
+}
+.button-secondary {
+	color: #006EE3;
+	border: 1px solid #006EE3;
+	border-radius: 4px;
+	font-size: 18px;
+	line-height: 30px;
+	font-family: 'Lato-Bold';
+	font-weight: 700;
+}
+.breadcrumb {
+	background: transparent;
+	padding-left: 0;
+}
+.name {
+	color: #1F344D;
+}
+.w-210 {
+	width: 210px;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 10px; 
+    color: #6c757d;
+    content: ".";
+    font-size: 45px;
+    line-height: 0px;
+}
+.breadcrumb-item a {
+	font-family: 'Lato-Bold';
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.error{
+	color:red;
+}
+
+/*header*/
+.main-header {
+	height: 72px;
+	background: #093C74 0% 0% no-repeat padding-box;
+	box-shadow: 0px 0px 6px #0C3453;
+	opacity: 1;
+}
+.logo {
+	text-align: left;
+	letter-spacing: 1px;
+	opacity: 1;
+	font-size: 20px;
+	line-height: 72px;
+	font-family: 'Montserrat-Regular';
+	font-weight: 400;
+	color: #fff;
+}
+.logo span {
+	font-family: 'Montserrat-SemiBold';
+	font-weight: 600;
+}
+.profile {
+	text-align: right;
+	line-height: 72px;
+}
+.profile p {
+	color: #fff;
+}
+
+/*subheader css*/
+.sub-header_ul{
+    display:flex;
+    flex-wrap: wrap;
+    margin: 0;
+    border-bottom: 1px solid #d8e3e6;
+}
+.sub-header_a{
+    text-decoration: none;
+}
+
+ul, li {
+	padding: 0;
+	list-style-type: none;
+}
+.sub-header {
+	width: 100%;
+	margin-bottom: 24px;
+}
+.sub-header_li a {
+	font-size: 18px;
+	line-height: 24px;
+	padding: 32px 30px;
+	color: #1F344D;
+	display: inline-block;
+	text-decoration: none;
+	border-bottom: 3px solid transparent;
+	font-family: 'Lato-Regular';
+	font-weight: 400;
+}
+.sub-header_li:first-child a  {
+	padding-left: 10px;
+}
+li.sub-header_li.active a {
+	color: #1F344D;
+	border-bottom: 3px solid #006EE3;
+	font-family: 'Lato-Bold';
+	font-weight: 700;
+}
+a.sub-header_a.active {
+	font-weight: bold;
+}
+li.sub-header_li a:hover {
+	border-bottom: 3px solid #006EE3;
+	/*font-weight: 700;*/
+}
+
+/*dashboared*/
+
+/*patient-search css*/
+.patient-search {
+	background: #fff;
+	box-shadow: 0px 0px 6px #CFD8E2;
+	border-radius: 4px;
+	margin-bottom: 28px;
+}
+.height-720 {
+	min-height: 720px;
+}
+/*.patient-heading h4 {
+	border-bottom: 1px solid #d8e3e6;
+}*/
+.right-btn {
+	text-align: right; 
+	padding-top: 20px; 
+	padding-right: 40px;
+}
+.right-btn button {
+	line-height: 24px;
+}
+.patient-heading h4 {
+	padding: 24px;
+	margin: 0;
+}
+.patient-search-form {
+	padding: 24px;
+}
+form.example input[type=text]{
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid #C3D4E0;
+    float: left;
+	width: 90%;
+	border-right: none;
+}
+.button-primary {
+	color: #fff;
+	background: #006EE3 0% 0% no-repeat padding-box;
+	border-radius: 4px;
+	font-size: 18px;
+	line-height: 30px;
+	font-family: 'Lato-Bold';
+	font-weight: 700;
+}
+.button-primary:hover, .button-primary.active {
+	background: #004B9C;
+	color: #fff;
+}
+.notes-list {
+	border-bottom: 1px solid #C3D4E0;
+}
+.notes-list ul {
+ 	display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+ }
+.notes-list ul li a {
+	font-size: 16px;
+	line-height: 24px;
+	display: inline-block;
+	margin-right: 24px;
+	padding-bottom: 16px;
+	border-bottom: 2px solid transparent;
+}
+.notes-list ul li.active a, .notes-list ul li a:hover {
+	border-bottom: 3px solid #006EE3;
+}
+.notes-list-inner {
+	padding: 24px 24px 0 24px;
+}
+.note-list-detail {
+	padding: 0 24px 24px;
+}
+.note-list-detail .list-content {
+	padding: 18px 0;
+	border-bottom: 1px solid #C3D4E0;
+}
+.note-form {
+	margin-top: 80px;
+}
+.search-list {
+	padding: 16px;
+    box-shadow: 0px 1px 4px #00000029;
+    border: 1px solid #E1EBF2;
+    border-radius: 4px;
+    margin-top: 24px;
+    background: #fff;
+}
+.search-list h6 {
+	color: #006EE3;
+	padding-top: 10px;
+}
+.search-list button {
+	font-size: 16px;
+}
+.search-list:hover, .search-list.active {
+	background: #F2F8FC;
+}
+.search-list:hover .search-list button {
+	background: #004B9C;
+}
+.search-list .col-md-5 {
+	text-align: right;
+}
+.ccd-icon-close {
+	cursor: pointer;
+}
+
+/*prescription css*/
+.prescription {
+	padding: 24px;
+}
+label {
+	font-size: 16px;
+	font-family: 'Lato-Regular';
+}
+.prescription label {
+	font-family: 'Lato-Bold';
+	font-weight: 700;
+	display: block;
+}
+.form-control {
+	height: calc(1.5em + .75rem + 8px);
+	color: #617183;
+}
+.left, .right {
+	width: 50%;
+}
+.right {
+	text-align: right;
+}
+.bottom-btn {
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	width: 100%;
+}
+.bottom-btn button {
+	width: 184px;
+	height: 44px;
+	border-radius: 4px;
+	text-align: center;
+	font-size: 18px;
+	font-family: 'Lato-Bold';
+	font-weight: 700;
+}
+.patient-heading {
+    border-bottom: 1px solid #d8e3e6;
+}
+/*add new patient*/
+.custom-icon {
+  position: relative;
+}
+.custom-icon .ccd-caret-down, .custom-icon .ccd-calendar  { 
+  position: absolute;
+  right: 15px;
+  top: 14px;
+  color: #006EE3;
+  cursor: pointer;
+  font-weight: bold;
+}
+.custom-icon select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+/*Billing Codes*/
+.thead-bg {
+  background: #DBF1FF; 
+}
+.billing-codes .prescription .table th {
+  border: none;
+  color: #004B9C;
+  font-size: 14px;
+} 
+
+/*<!-- Patient Financial Estimate (Graph) -->*/
+.graph-heading {
+	background: #DBF1FF;
+	padding: 10px 16px;
+	border-radius: 4px;
+}
+.graph-heading h6 {
+	color: #004B9C;
+}
+.graph-content p {
+	padding: 20px 15px;
+	margin: 0;
+}
+.graph-content-second p {
+	color: #617183;
+}
+.text-color {
+	color: #617183;
+}
+.patient-financial-estimate .patient-detail p {
+	text-transform: uppercase;
+	font-size: 14px;
+	margin: 5px;
+}
+.mb-20 {
+	margin-bottom: 20px;
+}
+.insurance-plan .row {
+	border-bottom: 1px solid #C3D4E0;
+	margin-bottom: 16px;
+}
+
+
+/*media queries*/
+@media only screen and (max-width: 540px) {
+	.button-primary {
+		width: 100%;
+		margin: 10px 0;
+	}
+	.text-right {
+	    margin-bottom: 10px;
+	}
+	.right-btn {
+		padding-left: 40px;
+	}
+	.button-secondary {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.button-primary {
+		margin: 10px 0;
+	}
+	form.example button {
+	    width: 25% !important;
+	}
+	form.example input[type=text] {
+		width: 75% !important;
+	}
+	.sub-header_li a {
+		font-size: 14px;
+		padding: 10px 10px;
+		display: block;
+	}
+	.sub-header_li {
+		width: 100%;
+	}
+	.main-header {
+		height: auto;
+	}
+	.logo {
+		font-size: 16px;
+	}
+	.main-header .col-sm-6 {
+		width: 50%;
+	}
+	.profile p {
+	    font-size: 12px;
+	}
+	.profile p img {
+	    width: 30px;
+	}
+	.patient-search-list .ccd-icon-close {
+		right: 130px !important;
+	}
+	.search-list .col-md-4 {
+		text-align: left;
+	}
+	.search-list button {
+	    font-size: 14px; 
+	}
+	.left, .right {
+		width: 100%;
+		text-align: center;
+		margin: 5px 0;
+	}
+	.bottom-btn button {
+		width: 100%;
+		text-align: center;
+		margin: 5px 0;
+	}
+}
+@media only screen and (max-width: 1024px) {
+	.search-list button {
+	    font-size: 14px; 
+	}
+	.button-primary {
+		margin: 10px 0;
+	}
+}

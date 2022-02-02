@@ -1,0 +1,727 @@
+/* Font icons */
+
+@font-face {
+    font-family: 'oncotool';
+    src: url('../fonts/oncotool.eot?igntth');
+    src: url('../fonts/oncotool.eot?igntth#iefix') format('embedded-opentype'), url('../fonts/oncotool.ttf?igntth') format('truetype'), url('../fonts/oncotool.woff?igntth') format('woff'), url('../fonts/oncotool.svg?igntth#oncotool') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+span.glyphicon.onco {
+    font-size: 40px;
+}
+
+span.text {
+    font-size: 15px;
+    padding-left: 12px;
+}
+
+[class^="onco-"],
+[class*=" onco-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'oncotool' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.onco-article:before {
+    content: "\e900";
+}
+
+.onco-audio:before {
+    content: "\e901";
+}
+
+.onco-plus:before {
+    content: "\e902";
+}
+
+.onco-video:before {
+    content: "\e903";
+}
+
+.onco-close:before {
+    content: "\e904";
+}
+
+.onco-minus:before {
+    content: "\e905";
+}
+
+.onco-alert:before {
+    content: "\e906";
+}
+
+.onco-coping-managing:before {
+    content: "\e907";
+}
+
+.onco-download-genomic-profile-report:before {
+    content: "\e908";
+}
+
+.onco-making-medical:before {
+    content: "\e909";
+}
+
+.onco-managing-non-physical:before {
+    content: "\e90a";
+}
+
+.onco-managing-physical:before {
+    content: "\e90b";
+}
+
+.onco-precision-oncology:before {
+    content: "\e90c";
+}
+
+.onco-preparing-for:before {
+    content: "\e90d";
+}
+
+.onco-health-concerns:before {
+    content: "\e90f";
+}
+
+.onco-resource:before {
+    content: "\e910";
+}
+
+.onco-decision-making:before {
+    content: "\e911";
+}
+
+.onco-care-after-cancer:before {
+    content: "\e90e";
+    color: #15c493;
+}
+
+.onco-eat-well-feel-well:before {
+    content: "\e912";
+    color: #ff464a;
+}
+
+.onco-healthy-at-any-age:before {
+    content: "\e913";
+    color: #005f76;
+}
+
+.onco-healthy-mind:before {
+    content: "\e914";
+    color: #efba46;
+}
+
+.onco-life-after-cancer:before {
+    content: "\e915";
+    color: #38CCD1;
+}
+
+.onco-staying-active:before {
+    content: "\e916";
+    color: #ac68b6;
+}
+
+.onco-understanding-breast-cancer:before {
+    content: "\e917";
+    color: #D44486;
+}
+
+.onco-wrapping-up:before {
+    content: "\e918";
+    color: #81d766;
+}
+
+.login-page {
+    margin: 35px auto;
+    width: 400px;
+}
+
+.login-bg {
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 0 10px;
+}
+
+.login-page .col-md-12.form-group.has-feedback {
+    padding-bottom: 10px;
+}
+
+.login-logo {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.login-logo img {
+    width: 85px;
+}
+
+.login-bg h3 {
+    color: #8d8d8d;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.media .date {
+    background-color: #fff0f5;
+    border: 1px solid #e4b9cc;
+}
+
+.media .date .day,
+.media .date .month,
+.tile-stats h3 {
+    color: #cb5c62;
+}
+
+
+/*end login*/
+
+
+/*start 3 step*/
+
+.step-2-right {
+    background-color: #fafafa;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+}
+
+.step-2-right h4 {
+    font-size: 16px;
+    padding: 0px 15px 0;
+    font-weight: bold;
+    color: #303030;
+}
+
+.step-2-right ul {
+    padding: 0px;
+}
+
+.step-2-right ul li {
+    list-style: outside none none;
+    margin: 0 15px 0px;
+}
+
+.step-2-right ul li a {
+    color: #555;
+    display: block;
+    font-size: 14px;
+    padding: 4px 10px;
+}
+
+.step-2-right ul li a.active {
+    color: #e355a3;
+}
+
+.input-file {
+    border: 1px dashed #b2b2b2;
+    display: block;
+    padding: 6px;
+    width: 100%;
+}
+
+
+/*end 3 step*/
+
+
+/*start step 3 popup*/
+
+.reorder-popup h4 {
+    font-size: 14px;
+}
+
+.c-black {
+    color: #555;
+}
+
+.popup-cont-img {
+    width: 80px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.classes-bg {
+    width: 100%;
+    margin: 0 0 20px 0;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.bg-general {
+    background-color: #66bfcd;
+}
+
+.bg-audio {
+    background-color: #77c29b;
+}
+
+.bg-video {
+    background-color: #f18abe;
+}
+
+.bg-question {
+    background-color: #667bcd;
+}
+
+.bg-topic {
+    background-color: #f57273;
+}
+
+.bg-testimonial {
+    background-color: #e4ba16;
+}
+
+.bg-intention {
+    background-color: #dca58c;
+}
+
+.classes-bg p {
+    margin: 30px auto;
+    text-align: center;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+.classes-bg span {
+    text-align: center;
+    width: 100%;
+    float: left;
+    font-size: 25px;
+    padding-top: 15px;
+}
+
+
+/*.table tbody tr td a i{font-size: 14px;margin: 0 0 0 5px;}		*/
+
+
+/*end step 3 popup*/
+
+
+/*start list user*/
+
+.user-full-detail-popup .modal-header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.user-full-detail-popup .modal-header img {
+    float: left;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 45px;
+}
+
+.user-full-detail-popup .modal-header h4 {
+    margin-top: 10px;
+}
+
+.user-full-detail-popup .modal-header button {
+    margin-top: 10px;
+}
+
+.add-more-item {
+    border-bottom: 1px solid #ddd;
+    margin: 0 0 15px 0
+}
+
+.add-more-item:last-child {
+    border-bottom: 0px none;
+}
+
+
+/*end list user*/
+
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.profile-img-container img {
+    width: 100%;
+    transition: all .50s ease-in;
+    -moz-transition: all .50s ease-in;
+    -webkit-transition: all .50s;
+}
+
+
+/* remove if using in grid system */
+
+.profile-img-container:hover img {
+    opacity: 0.35;
+}
+
+.profile-img-container:hover a {
+    opacity: 1;
+    top: 0;
+    z-index: 500;
+}
+
+
+/* added */
+
+.profile-img-container:hover a span {
+    top: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+
+/* added */
+
+.profile-img-container a {
+    display: block;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    color: inherit;
+}
+
+.breadcrumb {
+    background:#f7f6f6 none repeat scroll 0 0;
+    display: inline-block;
+    margin-top:60px;
+    margin-left:10px;
+}
+
+.breadcrumb li {
+    font-size: 16px;
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+    vertical-align: middle;
+}
+
+.im-tab .im-tab-content:not(.active) {
+    display: none;
+}
+
+.step-2-right .list-group>a.active:before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    margin-top: -13px;
+    border-left: 0;
+    border-bottom: 13px solid transparent;
+    border-top: 13px solid transparent;
+    border-right: 10px solid #604a70;
+}
+
+.step-2-right .list-group-item {
+    border-left: 0px none;
+    border-right: 0px none;
+    padding-left: 0
+}
+
+@media (max-width:767px) {
+    .step-2-right>h4,
+    .step-2-right .list-group-item {
+        text-align: center;
+        padding: 5px 0
+    }
+}
+
+.step-2-right .list-group {
+    margin-bottom: 0;
+}
+
+.step-2-right .list-group-item.active,
+.step-2-right .list-group-item.active:focus,
+.step-2-right .list-group-item.active:hover {
+    background-color: #604a70;
+    border-color: #604a70;
+}
+
+.step-2-right .list-group-item i {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 0 15px;
+    width: 45px;
+}
+
+@media (max-width:450px) {
+    .step-2-right .list-group-item i {
+        font-size: 18px;
+        line-height: 16px;
+        padding: 0;
+        width: auto;
+    }
+}
+
+@media (max-width: 2000px) {
+    body {
+        max-width: 2000px;
+        margin: 0 auto;
+        border: 1px solid #e2e2e2;
+    }
+}
+
+table td i.fa {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.x_title h3 {
+    float: left;
+    color: #613198;
+    font-weight: bold;
+}
+
+.x_title h2 {
+    float: left;
+}
+
+.ui-sortable-handle {
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+
+/* .ui-sortable-handle{margin-bottom: 15px;} */
+
+.ui-sortable-handle:hover {
+    cursor: move;
+}
+
+
+/** Add More Items */
+
+.item-details {
+    border-bottom: 1px solid #d8d7d7;
+    margin: 10px 0;
+}
+
+.item-details:last-child {
+    border-bottom: 0 none;
+}
+
+
+/** Row Reorder CSS */
+
+table.dt-rowReorder-float {
+    position: absolute !important;
+    opacity: 0.8;
+    table-layout: fixed;
+    outline: 2px solid #888;
+    outline-offset: -2px;
+    z-index: 2001
+}
+
+tr.dt-rowReorder-moving {
+    outline: 2px solid #555;
+    outline-offset: -2px
+}
+
+body.dt-rowReorder-noOverflow {
+    overflow-x: hidden
+}
+
+table.dataTable td.reorder {
+    text-align: center;
+    cursor: move
+}
+
+.logo {
+    text-align: center;
+    letter-spacing: 1px;
+    opacity: 1;
+    font-size: 20px;
+    line-height: 55px;
+    font-family: "Montserrat-Regular";
+    font-weight: 400;
+    color: #fff;
+    background: #093C74 0% 0% no-repeat padding-box;
+}
+.logo span {
+    font-family: "Montserrat-SemiBold";
+    font-weight: 600;
+}
+
+.close-btn {
+    position: absolute;
+    right: -6px;
+    top: -10px;
+    cursor: pointer;
+    font-size: 15px;
+    float: right;
+    color: #d9534f;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #c9302c;
+}
+
+audio,
+video {
+    border: 2px solid #ECECEC;
+    width: 100%;
+}
+
+.w-100px {
+    width: 100px
+}
+
+
+/* Other css */
+
+.pointer {
+    cursor: pointer;
+}
+
+.required-asterisk {
+    padding-left: 5px;
+    color: red;
+}
+
+.icon-move-trash {
+    text-align: right;
+}
+
+.icon-move-trash i {
+    font-size: 22px;
+    padding-right: 10px;
+    color: #606060;
+}
+
+.icon-add {
+    margin-top: -8px;
+    color: #aaa;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.icon-add i {
+    font-size: 33px;
+    vertical-align: middle;
+    padding-right: 10px;
+    margin-top: 0px;
+    color: #aaa;
+}
+
+.ui-state-default {
+    background: #faf9f9 !important;
+    border: 0 none !important;
+}
+
+.character-remaining-class {
+    font-size: 12px;
+    color: #613198;
+}
+
+.d-inline {
+    display: inline
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.c-pink {
+    color: #4d2262 !important
+}
+
+.no-drop {
+    cursor: no-drop;
+}
+
+#loading {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    display: none;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 99;
+    text-align: center;
+}
+
+#loading-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+}
+
+.mce-floatpanel {
+    max-height: 300px !important;
+}
+
+.ui-datepicker-calendar .ui-state-active,
+.ui-datepicker-calendar .ui-widget-content .ui-state-active,
+.ui-datepicker-calendar .ui-widget-header .ui-state-active,
+.ui-datepicker-calendar a.ui-button:active,
+.ui-datepicker-calendar .ui-button:active,
+.ui-datepicker-calendar .ui-button.ui-state-active:hover {
+    border: 1px solid #003eff !important;
+    background: #007fff !important;
+    font-weight: normal !important;
+    color: #fff !important;
+}
+
+.ui-datepicker-calendar .ui-state-highlight,
+.ui-datepicker-calendar .ui-widget-content .ui-state-highlight,
+.ui-datepicker-calendar .ui-widget-header .ui-state-highlight {
+    border: 1px solid #dad55e !important;
+    background: #fffa90 !important;
+    color: #777620 !important;
+}
+.link-bg{
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #e4e4e4;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.small-link{
+    text-decoration: underline !important;
+    font-size: 14px;
+    margin: 0 4px;
+    color: #7a6488;
+}
+.small-link:hover, .small-link:focus{
+    color:#371f4a;
+}
+.m-t-10{
+    margin-top: 10px;
+}
+.m-b-30{
+    margin-bottom: 30px;
+}
+.row-disabled{
+	background-color:#eaeaea;
+	cursor: not-allowed; 
+}
+.row-disabled td{
+	color:#b3b0b0;
+    pointer-events: none;
+}

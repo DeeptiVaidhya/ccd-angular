@@ -1,0 +1,51 @@
+.ccd-icon-close {
+	font-weight: normal;
+	font-size: 8px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: #093C74;
+}
+.list-content {
+	position: relative;
+}
+.custom-control-label {
+	padding: 0 10px;
+}
+
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 14px;
+  float: left;
+  width: 80%;
+  background: #F4F7FA;
+   border: none;
+   border-bottom-left-radius: 4px;
+   border-top-left-radius: 4px;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #006EE3;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-left: none;
+  cursor: pointer;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+form.example button:hover {
+  background: #0b7dda;
+}
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.ccd-plus {
+	font-weight: normal;
+}

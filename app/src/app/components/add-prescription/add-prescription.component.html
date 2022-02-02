@@ -1,0 +1,152 @@
+<!-- Prescriptions Details -->
+<div class="container" *ngIf="!addPrescriptionFlag">
+    <div class="row">
+        <div class="col-lg-6"> 
+            <div class="breadcrumb-head">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']" routerLinkActive="router-link-active" >Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)" (click)="navigateTopatientRecord()" routerLinkActive="router-link-active" >Patient Record</a></li>
+                    <li class="breadcrumb-item active">Prescriptions</li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-6 text-right"> 
+            <button class="btn button-primary mt-12" (click)="addPrescriptionShow()"> <i class="ccd-plus"></i> Add Prescription</button>
+        </div>
+    </div>
+    <div class="billing-codes">
+        <div class="patient-search">
+            <div class="patient-heading">
+                <h4>Prescriptions Details</h4>
+            </div>
+            <div class="prescription">
+               <div class="table-responsive">
+                   <table class="table">
+                        <thead class="thead-bg">
+                            <tr>
+                              <th scope="col">Medication name</th>
+                              <th scope="col">Co-pay</th>
+                              <th scope="col">Unit Price</th>
+                              <th scope="col">Quantity</th>
+                              <th scope="col">Covered</th>
+                              <th scope="col">Patient Pay</th>
+                              <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let prescription of prescriptionList">
+                              <td class="b-bold">{{prescription?.drug_name}}</td>
+                              <td *ngIf="prescription?.covered == '1'">${{prescription?.co_pay}}</td>
+                              <td *ngIf="prescription?.covered != '1'">NA</td>
+                              <td>${{prescription?.unit_price}}</td>
+                              <td>{{prescription?.quantity}}</td>
+                              <td>{{prescription?.covered == '1' ? 'YES' : 'NO'}}</td>
+                              <td>${{prescription?.patient_pay != '' ? prescription?.patient_pay : 0}}</td>
+                              <td><button class="btn button-secondary" (click)="getPrescriptionDetails(prescription?.id)"><i class="ccd-pencil1"></i></button></td>
+                            </tr>
+                      </tbody>
+                    </table>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Prescription -->
+<div class="container" *ngIf="addPrescriptionFlag">
+    <div class="breadcrumb-head">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']" routerLinkActive="router-link-active" >Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)" (click)="navigateTopatientRecord()" routerLinkActive="router-link-active" >Patient Record</a></li>
+            <li class="breadcrumb-item active">Add Prescription</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="patient-search">
+                <div class="patient-heading">
+                    <h4>Add Prescription</h4>
+                </div>
+                <div class="prescription">
+                    <form [formGroup]="patientPrescriptionForm">
+                        <div class="form-group">
+                            <label>Medication Name</label>
+                            <input type="text" formControlName="drug_name" class="form-control" (keyup)="searchPrescriptions($event)" placeholder="Please enter....">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientPrescriptionForm.controls['drug_name'].hasError('required') && patientPrescriptionForm.controls['drug_name'].touched">
+                               Medication name field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                               *ngIf="patientPrescriptionForm.controls['drug_name'].hasError('pattern') && patientPrescriptionForm.controls['drug_name'].touched">
+                               Please enter valid medication.</p>
+                            <span class="w-1 prescription-drp wrapper" *ngIf="searchList.length">
+                                <div class="select" *ngFor="let prescription of searchList">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-11">
+                                            <p (click) = "selectPrescription(prescription?.id, prescription?.drug_full_name, prescription?.unit_price)"><span class="font-bold">{{ prescription?.drug_full_name }}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>    
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Unit Price</label>
+                            <input type="text" (blur)="transformAmount($event)" formControlName="unit_price" class="form-control" placeholder="Please enter....">
+                             <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientPrescriptionForm.controls['unit_price'].hasError('required') && patientPrescriptionForm.controls['unit_price'].touched">
+                                Unit Price field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientPrescriptionForm.controls['unit_price'].hasError('pattern') && patientPrescriptionForm.controls['unit_price'].touched">
+                                Please enter valid unit price.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="text" formControlName="quantity" class="form-control" placeholder="Please enter....">
+                             <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientPrescriptionForm.controls['quantity'].hasError('required') && patientPrescriptionForm.controls['quantity'].touched">
+                                Quantity field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientPrescriptionForm.controls['quantity'].hasError('pattern') && patientPrescriptionForm.controls['quantity'].touched">
+                                Please enter valid quantity.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Covered?</label>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" [checked]="coverd == '1'" id="customRadioInline3" (click) ="coverdChange('1')" name="customRadioInline3" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline3">Yes</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" [checked]="coverd == '0'" id="customRadioInline4" (click) ="coverdChange('0')" name="customRadioInline3" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline4">No</label>
+                            </div>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientPrescriptionForm.controls['covered'].hasError('required') && patientPrescriptionForm.controls['covered'].touched">
+                                Covered field is required.</p>
+                        </div>
+
+                        <div class="form-group" *ngIf="isCovered">
+                            <label>Co-pay</label>
+                            <input type="text" (blur)="transformAmount($event)" formControlName="co_pay" class="form-control" placeholder="Please enter....">
+                             <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientPrescriptionForm.controls['co_pay'].hasError('required') && patientPrescriptionForm.controls['co_pay'].touched">
+                                Co-pay field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="patientPrescriptionForm.controls['co_pay'].hasError('pattern') && patientPrescriptionForm.controls['co_pay'].touched">
+                                Please enter valid co-pay.</p>
+                        </div>
+                    </form>
+                    <div class="bottom-btn mt-200">
+                        <div class="left">
+                            <button class="btn button-secondary" (click) ="back()"> Back</button>
+                        </div>
+                        <div class="right">
+                            <button class="btn button-primary" (click)="addPrescription()"> Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <app-notes></app-notes>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+/*Add Prescription*/
+form.example button {
+    float: left;
+    width: 10%;
+    padding: 10px;
+    color: #2196F3;
+    font-size: 20px;
+    border-left: none;
+    cursor: pointer;
+    border-top : 1px solid #C3D4E0;
+    border-top: 1px solid #C3D4E0;
+    border-right: 1px solid #C3D4E0;
+    border-left: none;
+    border-bottom: 1px solid #C3D4E0;
+    background: transparent;
+  }
+  
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .wrapper{
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-radius: 5px;
+    display: inline-block;
+}
+.prescription-drp {
+    width: 100%;
+    margin-top: 30px;
+    border: solid 1px #004B9C;
+    padding: 18px;
+}
+
+.select{
+    padding-top: 15px;
+    background: #F4F7FA;
+    padding-left: 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #004B9C;
+    cursor: pointer;
+}
+  

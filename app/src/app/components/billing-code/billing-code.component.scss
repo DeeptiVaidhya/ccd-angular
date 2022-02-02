@@ -1,0 +1,43 @@
+form.example button {
+    float: left;
+    width: 10%;
+    padding: 10px;
+    color: #2196F3;
+    font-size: 20px;
+    border-left: none;
+    cursor: pointer;
+    border-top : 1px solid #C3D4E0;
+    border-top: 1px solid #C3D4E0;
+    border-right: 1px solid #C3D4E0;
+    border-left: none;
+    border-bottom: 1px solid #C3D4E0;
+    background: transparent;
+  }
+  
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .custom-icon {
+    position: relative;
+  }
+  .custom-icon .ccd-caret-down, .custom-icon .ccd-calendar  { 
+    position: absolute;
+    right: 15px;
+    top: 14px;
+    color: #006EE3;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .w-160{
+    width:160px;
+  }
+  
+  .custom-icon select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+  }

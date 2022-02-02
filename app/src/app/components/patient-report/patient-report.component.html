@@ -1,0 +1,170 @@
+<!-- Patient Financial Estimate (Graph) -->
+<div class="container">
+    <div class="row" data-html2canvas-ignore="true">
+        <div class="col-lg-6"> 
+            <div class="breadcrumb-head">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']" routerLinkActive="router-link-active" >Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)" (click)="navigateTopatientRecord()" routerLinkActive="router-link-active" >Patient Record</a></li>
+                    <li class="breadcrumb-item active">Patient Report</li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-6 text-right" data-html2canvas-ignore="true"> 
+            <button class="btn button-primary mt-12" (click)="downloadPDF()"> <i class="ccd-print"></i> Print Page</button>
+        </div>
+    </div>
+
+    <div class="patient-financial-estimate" id="report">
+        <div class="patient-search patient-detail">
+            <div class="prescription">
+                <p class="f-bold text-color">PATIENT NAME</p>
+                <h2 class="mb-20">{{patientDetails?.patient_name}}</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="f-bold text-color">DOB</p>
+                        <h2>06/28/1950</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="f-bold text-color">Date</p>
+                        <h2>{{date | date:'M/d/yyyy'}}</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="f-bold text-color">Insurance Carrier</p>
+                        <h2>{{patientDetails?.insurance_type}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="patient-search">
+            <div class="patient-heading">
+                <h4>Patient Financial Estimate</h4> 
+            </div>
+            <div class="prescription">
+                <div class="graph" *ngIf="paymentDetails?.estimated_patient_payment != ''">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div id="chartdiv1" style="height: 85%"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div id="chartdiv2" style="height: 80%"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div id="chartdiv3" style="height: 80%"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div id="chartdiv4" style="height: 80%"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div id="chartdiv5" style="height: 80%"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div id="chartdiv6" style="height: 80%"></div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div id="chartdiv7" style="height: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="graph-content">
+                    <div class="graph-heading">
+                        <h6>Patient out of Pocket Information per Insurance carrier (Deductible/OOP/Co-insurance percentage/etc.)</h6>
+                    </div>
+                    <p>Patient has $100 ded (met) and a $6,850 OOP (4,143.73 met) 80/20 coins on treatment done in office.</p>
+                     <div class="graph-heading">
+                        <h6>Treatment Plan Details</h6>
+                    </div>
+                    <p>{{treatmentPalnDetails?.treatment_plan_details}}</p>
+                    <div class="graph-heading">
+                        <h6>Estimated Patient Responsibility</h6>
+                    </div>
+                    <p>{{patientDetails?.insurance_plan}}</p>
+                    <div class="graph-heading">
+                        <h6>Notes</h6>
+                    </div>
+                    <p>We can sign patient with an Amgen copay card to tat will leave a $25.00 copay for the Neualsta. This will then bring costs down to $255 for Adryamicin/ Cytoxan treatments.</p>
+                </div>
+             </div>
+        </div>
+        <div class="patient-search assistance-resources">
+            <div class="prescription">
+                <div class="patient-heading">
+                    <h4 class="pd-l">Patient Financial Estimate</h4> 
+                </div>
+                <div class="patient-detail-list" *ngFor ="let assistance of assistanceData">
+                  <div class="row">
+                    <div class="col-md-9 assistance-pt assistance-pb">
+                        <h2>{{assistance?.program}}</h2>
+                        <p><i class="fa fa-link"></i> &nbsp; <a href="{{assistance?.website}}">{{assistance?.website}}</a></p>
+                        <p><i class="fa fa-phone"></i> &nbsp;{{assistance?.phone}}</p>
+                        <p>{{assistance?.description}}</p>
+                        <div class="assistance-type">
+                            <p class="type">Assistant Types</p>
+                            <ul>
+                                <li *ngFor="let type of assistance?.assistance"><button class="btn full">{{type?.title}}</button></li>
+                            </ul>
+                        </div>
+                        <div class="assistance-type">
+                            <p class="type">Assistant Targets</p>
+                            <ul> 
+                                <li><button class="btn border-btn">{{assistance?.cancer_type}}</button></li>
+                                <li><button class="btn border-btn">Nationwide</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                       <div class="right-side-assitance assistance-pt assistance-pr assistance-pl assistance-pb">
+                           <div class="assistance-type">
+                                <p class="type">status</p>
+                                <button [ngClass]="assistance?.program_type == 'recommended' ? 'btn btn-green' : (assistance?.program_type == 'applied' ? 'btn btn-gray' : 'btn btn-drak-green')">{{assistance?.program_type | titlecase}}</button>
+                                <p class="type">Last updated</p>
+                                <p *ngIf="assistance?.program_type == 'recommended'">{{ assistance?.recommend_date |  date:'longDate'}}</p>
+                                <p *ngIf="assistance?.program_type == 'applied'">{{ assistance?.applied_date |  date:'longDate'}}</p>
+                                <p *ngIf="assistance?.program_type == 'approved'">{{ assistance?.approved_date |  date:'longDate'}}</p>
+                            </div> 
+                            <div class="apply">
+                                <button *ngIf="assistance?.program_type == 'recommended'" class="btn button-primary w-100" (click)="openModal(template, 'Apply')">Apply</button>
+                                <button *ngIf="assistance?.program_type == 'applied'" class="btn button-secondary w-100" (click)="openModal(template, 'Contact')">Contact</button>
+                                <button *ngIf="assistance?.program_type == 'approved'" class="btn button-secondary w-100" (click)="openModal(template, 'Contact')">Contact</button>
+                            </div> 
+                       </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="patient-search">
+             <div class="prescription">
+                <p class="f-bold text-color">Cost Estimate Disclaimer</p>
+                <div class="graph-content-second">
+                   <p>These costs are only an estimate and may vary according to each treatment you receive, treatment changes, and reimbursement by your insurance carrier. Additionally, these estimates may not include additional supportive drugs that are sometimes necessary be given in conjunction with your infusion therapy. Other variations in treatment are made by your ongoing medical condition.</p>
+                   <p>
+                   This information is being provided to you to prepare you for the financial obligation that is your responsibility according to the benefits provided to Cancer Care Specialists by your insurance carrier.</p>
+                   <p>The pricing includes medication and administrative costs associated  with your treatment regimen for the treatment length define herein.</p>
+                    <p>I have reviewed the total cost of treatment and understand my insurance benefits. I acknowledge this is only an estimate and I will be responsible for 100% of my actual financial responsibility.</p>
+
+                    <p class="f-bold text-color">Cost Estimate Disclaimer</p>
+                    <p>It is our standard practice to enroll all patients in assistance programs.</p>
+                    <p> If you are commercially insured, to offset the cost of therapy for financially challenged patients, many pharmaceutical manufacturer partners offer patient assistance programs.</p>
+                    <p> There are also foundations that provide financial assistance for patients in need of additional resources. They can provide additional funding to cover the cost of the cancer treatment for many patients.</p>
+                    <p> Enrollment in a foundation or drug assistance program does not guarantee that assistance will be obtained. Assistance is subject to approval under the program guidelines. These programs also reserve the right to change or terminate the program without prior notice. In the event that a drug or date of service is not covered by program assistance, you will be fully responsible for the cost.</p>
+                    <p> I have received a copy of the HIPAA Privacy Policy of Cancer Care Specialists and authorize Cancer Care Specialists to release my personal information to any foundation, on my behalf, to receive foundation or drug assistance. By signing below, I agree to allow Cancer Care Specialists to sign and submit assistance applications on my behalf electronically or otherwise.</p>
+                   <p></p>
+                   <p></p>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{modalTitle}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    </div>
+  </ng-template>

@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="patient-search">
+            	<div class="patient-heading">
+            		<h4>Patient Search</h4>
+            	</div>
+            	<div class="patient-search-form patient-search-list">
+            		<form [formGroup]="patientSearchForm" class="example">
+					    <input type="text" formControlName="serach_key" placeholder="Search.." name="search">
+                        <ng-container *ngIf="searchPatientFlag">
+                            <i class="ccd-icon-close" (click)="clearSerach()"></i>
+                        </ng-container>
+                        <button (click)="searchPatient()"><i class="ccd-search"></i></button>
+					</form>
+					<h5 *ngIf="!searchPatientFlag">Or</h5>
+					<button *ngIf="!searchPatientFlag" class="btn button-primary w-210" (click)="addNewPatient()"><i class="ccd-plus"></i> Add a new patient</button>
+                    <ng-container *ngIf="searchPatientFlag">
+                        <div class="search-list" *ngFor="let patient of patientList">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h6>{{patient.patient_name}}</h6>
+                                </div>
+                                <div class="col-md-5">
+                                    <button class="btn button-primary" (click)="patientDetails(patient?.id)"><i class="ccd-eye"></i> Patient Record</button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <app-notes></app-notes>
+        </div>
+    </div>
+</div>
+
+
+ 
+
+
+
+

@@ -1,0 +1,421 @@
+<!-- Assistance Details -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="breadcrumb-head">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']"
+                            routerLinkActive="router-link-active">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)" (click)="navigateTopatientRecord()"
+                            routerLinkActive="router-link-active">Patient Record</a></li>
+                    <li class="breadcrumb-item active">Assistance</li>
+                </ol>
+            </div>
+        </div>
+        <!-- <div class="col-lg-6 text-right">
+            <button class="btn button-primary mt-12" (click)="addProgram()"> <i class="ccd-plus"></i> Add
+                Program</button>
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="patient-search">
+                <div class="patient-heading">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Patient Profile</h4>
+                        </div>
+                        <div class="col-lg-6 right-btn" *ngIf="patientProfileEditFlag">
+                            <button class="btn button-primary" (click)="updatePatientProfile()"> <i
+                                    class="ccd-pencil1"></i> Save</button>
+                        </div>
+                        <div class="col-lg-6 right-btn" *ngIf="!patientProfileEditFlag">
+                            <button class="btn button-secondary" (click)="editPatientProfile()"> <i
+                                    class="ccd-pencil1"></i> Edit</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="prescription">
+                    <div class="" *ngIf="!patientProfileEditFlag">
+                        
+                        <p class="mb-0">{{ checkProfileValue() }}</p>
+                    </div>
+                    <div class="" *ngIf="patientProfileEditFlag">
+                        <form [formGroup]="patientProfileForm" autocomplete="off" class="ot-form">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Cancer type</label>
+                                <div class="custom-icon">
+                                    <select class="form-control" formControlName="cancer_type"
+                                        id="exampleFormControlSelect1">
+                                        <option value="">Select cancer type</option>
+                                        <option *ngFor="let cancer of cancerList" value="{{cancer?.name}}">
+                                            {{cancer?.name}}</option>
+                                    </select>
+                                    <i class="ccd-caret-down"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Age group</label>
+                                <div class="custom-icon">
+                                    <select class="form-control" formControlName="age_group"
+                                        id="exampleFormControlSelect1">
+                                        <option value="">Select age group</option>
+                                        <option *ngFor="let ageGroup of ageGroupList" value="{{ageGroup?.name}}">
+                                            {{ageGroup?.name}}</option>
+                                    </select>
+                                    <i class="ccd-caret-down"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Zip code</label>
+                                <input type="text" class="form-control" formControlName="zip_code"
+                                    placeholder="Please enter">
+                                <p class="error m-0-auto" col-12 ion-text color="danger"
+                                    *ngIf="patientProfileForm.controls['zip_code'].hasError('pattern') && patientProfileForm.controls['zip_code'].touched">
+                                    Please enter valid zip code .</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="patient-search">
+                <div class="patient-heading">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Assistance Needed</h4>
+                        </div>
+                        <div class="col-lg-6 right-btn" *ngIf="assistanceNeededEditFlag">
+                            <button class="btn button-primary" (click)="updateassistanceNeeded()"> <i
+                                    class="ccd-pencil1"></i> Save</button>
+                        </div>
+                        <div class="col-lg-6 right-btn" *ngIf="!assistanceNeededEditFlag">
+                            <button class="btn button-secondary" (click)="editassistanceNeeded()"> <i
+                                    class="ccd-pencil1"></i> Edit</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="prescription">
+                    <div class="" *ngIf="!assistanceNeededEditFlag">
+                        <p class="mb-0">{{selectedPatientAssistance}}</p>
+                    </div>
+                    <div class="" *ngIf="assistanceNeededEditFlag">
+                        <form [formGroup]="assistanceNeededForm" autocomplete="off" class="ot-form">
+                            <div class="form-group">
+                                <div class="row">
+                                    <ng-container *ngFor="let data of Data; let i=index">
+                                        <div class="col-md-5" *ngIf="i<=4">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="customCheck{{i}}" [value]="data.id"
+                                                    (change)="onCheckboxChange($event)">
+                                                <label class="custom-control-label" for="customCheck{{i}}">
+                                                    {{data.title}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5" *ngIf="i>4">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="customCheck{{i}}" [value]="data.id"
+                                                    (change)="onCheckboxChange($event)">
+                                                <label class="custom-control-label" for="customCheck{{i}}">
+                                                    {{data.title}}</label>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <button [disabled]="isSearchFlag" class="btn button-primary mb-5" (click)="searchProgram()"> <i class="ccd-search"></i> Search
+                Assistance Program</button>
+        </div>
+    </div>
+    <div class="row" *ngIf="searchAssistance.length">
+        <div class="col-md-12">
+            <div class="patient-search">
+                <div class="patient-search-form patient-search-list">
+                    <div class="search-list" *ngFor="let ass of searchAssistance; let i=index">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h6><a class="link-bg" href="{{ass?.website}}">{{ass.program}}</a> &nbsp;
+                                    <button class="btn border-btn" popover="{{ass?.description}}"
+                                        popoverTitle="Description"
+                                        triggers="focus"
+                                        placement="auto">View description
+                                    </button></h6>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck{{i}}" [value]="ass.id"
+                                    (change)="addProgramToRecom($event)">
+                                    <label class="custom-control-label" for="customCheck{{i}}"> Recommend?</label>
+                                 </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <button class="btn button-primary mb-5" (click)="addAssistanceRecommandedList()"> <i
+                class="ccd-pencil1"></i> Save Recommended Program</button>
+        </div>
+    </div>
+    <div class="billing-codes">
+        <div class="patient-search">
+            <div class="patient-heading">
+                <h4>Recommended Assistance Programs</h4>
+            </div>
+            <div class="prescription">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-bg">
+                            <tr>
+                                <th scope="col">Program</th>
+                                
+                                <th scope="col">Phone</th>
+                                <!-- <th scope="col">Description</th> -->
+                                <th scope="col">Services</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let assistance of recommendedAssistance; let i=index">
+                                <td><a class="link-bg" href="{{assistance?.website}}">{{assistance?.program}}</a> &nbsp;
+                                    <button class="btn border-btn" popover="{{assistance?.description}}"
+                                        popoverTitle="Description"
+                                        triggers="focus"
+                                        placement="auto">View description
+                                    </button>
+                                </td>
+                                <!-- <td>{{assistance?.website}}</td> -->
+                                <td>{{getFormattedPhoneNumber(assistance?.phone)}}</td>
+                                <!-- <td style="width:300px">Provides direct co-payment assistance for pharmaceutical products to insured patients (including Medicare Part D beneficiaries) who qualify financially and medically</td> -->
+                                <td>{{getAssistanceServices(assistance?.assistance)}}</td>
+                                <td><button class="btn button-secondary"
+                                        (click)="addAssistanceToPatient(assistance.patient_program_id, assistance.id, 'applied', i)">Applied</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="billing-codes">
+        <div class="patient-search">
+            <div class="patient-heading">
+                <h4>Applied Assistance Programs</h4>
+            </div>
+            <div class="prescription">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-bg">
+                            <tr>
+                                <th scope="col">Program</th>
+                                <!-- <th scope="col">Website</th> -->
+                                <th scope="col">Phone</th>
+                                <!-- <th scope="col">Description</th> -->
+                                <th scope="col">Services</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let assistance of appliedAssistance; let i=index">
+                                <td><a class="link-bg" href="{{assistance?.website}}">{{assistance?.program}}</a> &nbsp;
+                                    <button class="btn border-btn" popover="{{assistance?.description}}"
+                                        popoverTitle="Description"
+                                        triggers="focus"
+                                        (click)="pop.toggle()"
+                                        #pop="bs-popover"
+                                        placement="auto">View description
+                                    </button></td>
+                                <!-- <td>{{assistance?.website}}</td> -->
+                                <td>{{getFormattedPhoneNumber(assistance?.phone)}}</td>
+                                <!-- <td style="width:300px">Provides direct co-payment assistance for pharmaceutical products to insured patients (including Medicare Part D beneficiaries) who qualify financially and medically</td> -->
+                                <td>{{getAssistanceServices(assistance)}}</td>
+                                <td><button class="btn button-secondary"
+                                        (click)="addAssistanceToPatient(assistance.patient_program_id, assistance.id, 'approved', i)">Approved</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="billing-codes">
+        <div class="patient-search">
+            <div class="patient-heading">
+                <h4>Approved Assistance Programs</h4>
+            </div>
+            <div class="prescription">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-bg">
+                            <tr>
+                                <th scope="col">Program</th>
+                                <!-- <th scope="col">Website</th> -->
+                                <th scope="col">Phone</th>
+                                <!-- <th scope="col">Description</th> -->
+                                <th scope="col">Services</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let assistance of approvedAssistance; let i=index">
+                                <td><a class="link-bg" href="{{assistance?.website}}">{{assistance?.program}}</a> &nbsp;
+                                    <button class="btn border-btn" popover="{{assistance?.description}}"
+                                        popoverTitle="Description"
+                                        triggers="focus"
+                                        #pop="bs-popover"
+                                        (click)="pop.toggle()"
+                                        placement="auto">View description
+                                    </button></td>
+                                <!-- <td>{{assistance?.website}}</td> -->
+                                <td>{{getFormattedPhoneNumber(assistance?.phone)}}</td>
+                                <!-- <td style="width:300px">Provides direct co-payment assistance for pharmaceutical products to insured patients (including Medicare Part D beneficiaries) who qualify financially and medically</td> -->
+                                <td>{{getAssistanceServices(assistance)}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+<!-- Add Program -->
+<!-- <div class="container" *ngIf="addProgramFlag">
+    <div class="breadcrumb-head">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']"
+                    routerLinkActive="router-link-active">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)" (click)="navigateTopatientRecord()"
+                    routerLinkActive="router-link-active">Patient Record</a></li>
+            <li class="breadcrumb-item active">Add Program</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="patient-search">
+                <div class="patient-heading">
+                    <h4>Add Program</h4>
+                </div>
+                <div class="prescription">
+                    <form [formGroup]="addProgramForm">
+                        <div class="form-group">
+                            <label>Program</label>
+                            <input type="text" formControlName="program" class="form-control"
+                                placeholder="Please enter....">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['program'].hasError('required') && addProgramForm.controls['program'].touched">
+                                Program name field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['program'].hasError('pattern') && addProgramForm.controls['program'].touched">
+                                Please enter valid program.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Website</label>
+                            <input type="text" formControlName="website" class="form-control"
+                                placeholder="Please enter....">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['website'].hasError('required') && addProgramForm.controls['website'].touched">
+                                Website field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['website'].hasError('pattern') && addProgramForm.controls['website'].touched">
+                                Please enter valid website.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" formControlName="phone" class="form-control"
+                                placeholder="Please enter....">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['phone'].hasError('required') && addProgramForm.controls['phone'].touched">
+                                Phone field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['phone'].hasError('pattern') && addProgramForm.controls['phone'].touched">
+                                Please enter valid phone.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" formControlName="description" class="form-control"
+                                placeholder="Please enter....">
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['description'].hasError('required') && addProgramForm.controls['description'].touched">
+                                Description field is required.</p>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['description'].hasError('pattern') && addProgramForm.controls['description'].touched">
+                                Please enter valid description.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Cancer type</label>
+                                <div class="custom-icon">
+                                    <select class="form-control" formControlName="cancer_type"
+                                        id="exampleFormControlSelect1">
+                                        <option value="">Select cancer type</option>
+                                        <option *ngFor="let cancer of cancerList" value="{{cancer?.name}}">
+                                            {{cancer?.name}}</option>
+                                    </select>
+                                    <i class="ccd-caret-down"></i>
+                                </div>
+                            <p class="error m-0-auto" col-12 ion-text color="danger"
+                                *ngIf="addProgramForm.controls['cancer_type'].hasError('required') && addProgramForm.controls['cancer_type'].touched">
+                                Cancer field is required.</p>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Assistance</label>
+                            <div class="row">
+                                <ng-container *ngFor="let data of Data; let i=index">
+                                    <div class="col-md-5" *ngIf="i<=4">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                id="customCheck{{i}}" [value]="data.id"
+                                                (change)="addAssistanceToProgram($event)">
+                                            <label class="custom-control-label" for="customCheck{{i}}">
+                                                {{data.title}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5" *ngIf="i>4">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                id="customCheck{{i}}" [value]="data.id"
+                                                (change)="addAssistanceToProgram($event)">
+                                            <label class="custom-control-label" for="customCheck{{i}}">
+                                                {{data.title}}</label>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        
+                    </form>
+                    <div class="bottom-btn mt-4">
+                        <div class="left">
+                            <button class="btn button-secondary" (click)="back()"> Back</button>
+                        </div>
+                        <div class="right">
+                            <button class="btn button-primary" (click)="saveProgram()"> Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <app-notes></app-notes>
+        </div>
+    </div>
+</div> -->

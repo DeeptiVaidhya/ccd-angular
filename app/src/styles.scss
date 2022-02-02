@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.sub-header_ul{
+    display:flex;
+}
+
+.sub-header_li{
+    padding: 10px;
+    list-style: none;
+}
+
+.sub-header_a{
+    text-decoration: none;
+}

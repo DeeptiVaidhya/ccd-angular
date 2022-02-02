@@ -1,0 +1,1 @@
+ALTER TABLE `patient_prescriptions` ADD `covered` ENUM('0','1') NOT NULL AFTER `quantity`;

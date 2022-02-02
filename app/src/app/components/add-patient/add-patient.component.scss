@@ -1,0 +1,21 @@
+/*add new patient*/
+.custom-icon {
+    position: relative;
+  }
+  .custom-icon .ccd-caret-down, .custom-icon .ccd-calendar  { 
+    position: absolute;
+    right: 15px;
+    top: 14px;
+    color: #006EE3;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .custom-icon select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+  }
+  textarea{
+    width:100%;
+  }

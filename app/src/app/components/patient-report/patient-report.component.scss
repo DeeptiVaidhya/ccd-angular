@@ -1,0 +1,195 @@
+/*Add Prescription*/
+form.example button {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  color: #2196F3;
+  font-size: 20px;
+  border-left: none;
+  cursor: pointer;
+  border-top : 1px solid #C3D4E0;
+  border-top: 1px solid #C3D4E0;
+  border-right: 1px solid #C3D4E0;
+  border-left: none;
+  border-bottom: 1px solid #C3D4E0;
+  background: transparent;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.patient-search-form h5 {
+    margin-top: 24px;
+    margin-bottom: 18px;
+}
+.ccd-eye {
+    font-size: 10px;
+}
+.patient-search-list .example {
+     position: relative;
+}
+.patient-search-list .ccd-icon-close {
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    right: 80px;
+    top: 16px;
+    cursor: pointer;
+}
+.patient-search-list .example button {
+    border-left: 1px solid #ccc;
+}
+.ccd-search {
+  font-weight: bold;
+}
+
+
+.custom-control-label {
+    font-weight: 400 !important;
+    font-family: 'Lato-Regular';
+}
+
+.pd-l {
+    padding-left: 0;
+}
+.patient-detail-list {
+    padding: 0px 0 0px 24px;
+    border: 1px solid #DBF1FF;
+    margin-top: 24px;
+}
+.patient-detail-list h2 {
+    font-size: 32px;
+    color: #004B9C;
+    margin-bottom: 24px;
+    font-weight: bold;
+}
+
+.patient-detail-list a {
+    color: #006EE3;
+}
+.patient-detail-list p {
+    font-size: 16px;
+}
+.fa-link, .fa-phone {
+    color: #96A3AD;
+}
+.assistance-type .type {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #617183;
+    margin-bottom: 5px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+}
+.assistance-type ul {
+    padding: 0;
+}
+.assistance-type ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+.assistance-type ul li button.full {
+    background: #C62EC6;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 6px;
+}
+.assistance-type ul li button.border-btn {
+    border: 1px solid #C62EC6;
+    border-radius: 2px;
+    color: #C62EC6;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 6px;
+}
+.btn-green {
+    background: #B5FFDA;
+    border-radius: 2px;
+    color: #1F344D;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 14px;
+    margin-bottom: 10px;
+}
+.btn-gray {
+    background: #E1EBF2;
+    border-radius: 2px;
+    color: #1F344D;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 14px;
+    margin-bottom: 10px;
+}
+.btn-drak-green {
+    background: #00AF57;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 14px;
+    margin-bottom: 10px;
+}
+.w-100 {
+    width: 100%;
+}
+.assistance-pt {
+    padding-top: 24px;
+}
+.assistance-pr {
+    padding-right: 24px;
+}
+.assistance-pl {
+    padding-left: 24px;
+} 
+.assistance-pb {
+    padding-bottom: 24px;
+}
+.right-side-assitance {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    border-left: 1px solid #DBF1FF;
+}
+.apply {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+
+
+.graph{
+    height:900px;
+}
+
+.row{
+    height:100% !important;
+}
+
+text tspan{
+    text-align: left !important;
+    font: Regular 10px/16px Lato !important;
+    font-size: smaller !important;
+    letter-spacing: 0px !important;
+    color: #1F344D !important;
+    opacity: 1 !important;
+    transform: translate(19px, 0px) !important;
+}
+
+@media only screen and (max-width: 990px) {
+	.graph{
+        height:1050px;
+    }
+}
+
